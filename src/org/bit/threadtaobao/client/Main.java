@@ -1,6 +1,8 @@
 package org.bit.threadtaobao.client;
 
 
+import org.bit.threadtaobao.twodimencodescan.TwoDimenCodeScan;
+
 import android.app.Activity;
 import android.content.Intent;
 
@@ -48,8 +50,8 @@ public class Main extends Activity
 						break;
 					// 扫一扫
 					case 1:
-						// 启动ScanTwoDimenCode Activity
-						intent = new Intent(Main.this, ScanTwoDimenCode.class);
+						// 启动TwoDimenCodeScan Activity
+						intent = new Intent(Main.this, TwoDimenCodeScan.class);
 						startActivity(intent);
 						break;
 					// 查看购物车
