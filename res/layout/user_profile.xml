@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:stretchColumns="1">	
+<TextView
+	android:text="@string/user_info"
+	android:id="@+id/TextView"
+	android:textSize="@dimen/label_font_size"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:gravity="center"
+	android:padding="@dimen/title_padding"
+	/>
+<TableRow>
+    
+<TextView
+	android:text="@string/username"
+	android:textSize="@dimen/label_font_size"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"/>
+<EditText
+	android:id="@+id/userName"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:cursorVisible="false"
+	android:editable="false"
+	/>
+</TableRow>
+<TableRow>
+<TextView
+	android:text="@string/real_name"
+	android:textSize="@dimen/label_font_size"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"/>
+<EditText
+	android:id="@+id/realName"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:cursorVisible="false"
+	android:editable="false"
+	/>
+</TableRow>
+<TableRow>
+<TextView
+	android:text="@string/gender"
+	android:textSize="@dimen/label_font_size"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"/>
+<EditText
+	android:id="@+id/gender"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:cursorVisible="false"
+	android:editable="false"
+	/>
+</TableRow>
+<TableRow>
+<TextView
+	android:text="@string/user_signature"
+	android:textSize="@dimen/label_font_size"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"/>
+<EditText
+	android:id="@+id/userSignature"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:cursorVisible="false"
+	/>
+</TableRow>
+</TableLayout>

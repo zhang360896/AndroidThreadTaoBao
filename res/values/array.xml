@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="mainMenu">
+		<item>个人信息</item>
+		<item>扫一扫</item>
+		<item>购物车</item>
+		<item>我的订单</item>
+		<item>退出</item>
+	</string-array>
+	<string-array name="availTime">
+		<item>一天</item>
+		<item>二天</item>
+		<item>三天</item>
+		<item>四天</item>
+		<item>五天</item>
+		<item>一个星期</item>
+		<item>一个月</item>
+	</string-array>	
+</resources>
