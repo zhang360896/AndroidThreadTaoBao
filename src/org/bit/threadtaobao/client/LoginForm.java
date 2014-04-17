@@ -25,7 +25,7 @@ import android.widget.EditText;
  * @author  Yeeku.H.Lee kongyeeku@163.com
  * @version  1.0
  */
-public class Login extends Activity
+public class LoginForm extends Activity
 {
 	// 定义界面中两个文本框
 	EditText etName, etPass;
@@ -56,7 +56,7 @@ public class Login extends Activity
 //					if (loginPro())
 					{
 						// 启动Main Activity
-						Intent intent = new Intent(Login.this, Main.class);
+						Intent intent = new Intent(LoginForm.this, MainForm.class);
 						startActivity(intent);
 						// 结束该Activity
 						finish();
@@ -114,11 +114,11 @@ public class Login extends Activity
 	}
 	
 	private void confirmExit() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
+		AlertDialog.Builder builder = new AlertDialog.Builder(LoginForm.this);
 		builder.setTitle("退出软件").setMessage("是否退出软件?")
 				.setPositiveButton("是", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-						Login.this.finish();
+						LoginForm.this.finish();
 					}
 				})
 				.setNegativeButton("否", new DialogInterface.OnClickListener() {

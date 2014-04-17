@@ -1,6 +1,7 @@
 package org.bit.threadtaobao.client;
 
 
+import org.bit.threadtaobao.client.location.MyLocation;
 import org.bit.threadtaobao.twodimencodescan.TwoDimenCodeScan;
 
 import android.app.Activity;
@@ -22,7 +23,7 @@ import android.widget.ListView;
  * @author  Yeeku.H.Lee kongyeeku@163.com
  * @version  1.0
  */
-public class Main extends Activity
+public class MainForm extends Activity
 {
 	ListView mainMenu;
 
@@ -45,31 +46,36 @@ public class Main extends Activity
 					// 查看个人信息
 					case 0:
 						// 启动UserProfile Activity
-						intent = new Intent(Main.this, UserProfile.class);
+						intent = new Intent(MainForm.this, UserProfile.class);
 						startActivity(intent);
 						break;
 					// 扫一扫
 					case 1:
 						// 启动TwoDimenCodeScan Activity
-						intent = new Intent(Main.this, TwoDimenCodeScan.class);
+						intent = new Intent(MainForm.this, TwoDimenCodeScan.class);
 						startActivity(intent);
 						break;
 					// 查看购物车
 					case 2:
 						// 启动ViewShoppingCart Activity
-						intent = new Intent(Main.this, ViewShoppingCart.class);
+						intent = new Intent(MainForm.this, ShoppingCartView.class);
 						startActivity(intent);
 						break;
 					// 查看我的订单
 					case 3:
 						// 启动ViewOrder Activity
-						intent = new Intent(Main.this, ViewOrder.class);
+						intent = new Intent(MainForm.this, OrderListView.class);
+						startActivity(intent);
+						break;
+					case 4:
+						// 启动MyLocation Activity
+						intent = new Intent(MainForm.this, MyLocation.class);
 						startActivity(intent);
 						break;
 					// 退出登录
-					case 4:
+					case 5:
 						// 启动ChooseKind Activity
-						intent = new Intent(Main.this, Login.class);
+						intent = new Intent(MainForm.this, LoginForm.class);
 						startActivity(intent);
 						finish();
 						break;
