@@ -33,7 +33,7 @@ public class MainForm extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		mainMenu = (ListView) findViewById(R.id.mainMenu);
-		// ÎªListViewµÄ¸÷ÁĞ±íÏîµÄµ¥»÷ÊÂ¼ş°ó¶¨ÊÂ¼ş¼àÌıÆ÷¡£
+		// ä¸ºListViewçš„å„åˆ—è¡¨é¡¹çš„å•å‡»äº‹ä»¶ç»‘å®šäº‹ä»¶ç›‘å¬å™¨ã€‚
 		mainMenu.setOnItemClickListener(new OnItemClickListener()
 		{
 			@Override
@@ -43,38 +43,39 @@ public class MainForm extends Activity
 				Intent intent = null;
 				switch ((int) id)
 				{
-					// ²é¿´¸öÈËĞÅÏ¢
+					// æŸ¥çœ‹ä¸ªäººä¿¡æ¯
 					case 0:
-						// Æô¶¯UserProfile Activity
+						// å¯åŠ¨UserProfile Activity
 						intent = new Intent(MainForm.this, UserProfile.class);
 						startActivity(intent);
 						break;
-					// É¨Ò»É¨
+					// æ‰«ä¸€æ‰«
 					case 1:
-						// Æô¶¯TwoDimenCodeScan Activity
+						// å¯åŠ¨TwoDimenCodeScan Activity
 						intent = new Intent(MainForm.this, TwoDimenCodeScan.class);
 						startActivity(intent);
 						break;
-					// ²é¿´¹ºÎï³µ
+					// æŸ¥çœ‹è´­ç‰©è½¦ï³µ
 					case 2:
-						// Æô¶¯ViewShoppingCart Activity
+						// å¯åŠ¨ViewShoppingCart Activity
 						intent = new Intent(MainForm.this, ShoppingCartView.class);
 						startActivity(intent);
 						break;
-					// ²é¿´ÎÒµÄ¶©µ¥
+					// æŸ¥çœ‹æˆ‘çš„è®¢å•
 					case 3:
-						// Æô¶¯ViewOrder Activity
+						// å¯åŠ¨ViewOrder Activity
 						intent = new Intent(MainForm.this, OrderListView.class);
 						startActivity(intent);
 						break;
+					// æŸ¥çœ‹æˆ‘çš„ä½ç½®
 					case 4:
-						// Æô¶¯MyLocation Activity
+						// å¯åŠ¨MyLocation Activity
 						intent = new Intent(MainForm.this, MyLocation.class);
 						startActivity(intent);
 						break;
-					// ÍË³öµÇÂ¼
+					// é€€å‡ºç™»å½•
 					case 5:
-						// Æô¶¯ChooseKind Activity
+						// å¯åŠ¨ChooseKind Activity
 						intent = new Intent(MainForm.this, LoginForm.class);
 						startActivity(intent);
 						finish();

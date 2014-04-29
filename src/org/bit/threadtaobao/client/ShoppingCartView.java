@@ -24,7 +24,7 @@ public class ShoppingCartView extends Activity {
 	
 	public void init() {
 		shoppingcartListView = (ListView) findViewById(R.id.shoppingcart_listView);
-		String[] array = {"商品1","商品2","商品3"};
+		String[] array = {"鍟嗗搧1","鍟嗗搧2","鍟嗗搧3"};
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, array);
 		shoppingcartListView.setAdapter(arrayAdapter);
 		

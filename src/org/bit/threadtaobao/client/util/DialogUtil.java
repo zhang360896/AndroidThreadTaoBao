@@ -1,4 +1,4 @@
-/**
+ï»¿/**
  * 
  */
 package org.bit.threadtaobao.client.util;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.app.Activity;
 /**
  * Description:
- * <br/>ÍøÕ¾: <a href="http://www.crazyit.org">·è¿ñJavaÁªÃË</a> 
+ * <br/>ï¿½ï¿½Õ¾: <a href="http://www.crazyit.org">ï¿½ï¿½ï¿½Javaï¿½ï¿½ï¿½ï¿½</a> 
  * <br/>Copyright (C), 2001-2012, Yeeku.H.Lee
  * <br/>This program is protected by copyright laws.
  * <br/>Program Name:
@@ -21,37 +21,37 @@ import android.app.Activity;
  */
 public class DialogUtil
 {
-	// ¶¨ÒåÒ»¸öÏÔÊ¾ÏûÏ¢µÄ¶Ô»°¿ò
+	// å®šä¹‰ä¸€ä¸ªæ˜¾ç¤ºæ¶ˆæ¯çš„å¯¹è¯æ¡†
 	public static void showDialog(final Context ctx
 		, String msg , boolean closeSelf)
 	{
-		// ´´½¨Ò»¸öAlertDialog.Builder¶ÔÏó
+		// åˆ›å»ºä¸€ä¸ªAlertDialog.Builderå¯¹è±¡
 		AlertDialog.Builder builder = new AlertDialog.Builder(ctx)
 			.setMessage(msg).setCancelable(false);
 		if(closeSelf)
 		{
-			builder.setPositiveButton("È·¶¨", new OnClickListener()
+			builder.setPositiveButton("ç¡®å®š", new OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface dialog, int which)
 				{
-					// ½áÊøµ±Ç°Activity
+					// ç»“æŸå½“å‰Activity
 					((Activity)ctx).finish();
 				}
 			});		
 		}
 		else
 		{
-			builder.setPositiveButton("È·¶¨", null);
+			builder.setPositiveButton("È·ï¿½ï¿½", null);
 		}
 		builder.create().show();
 	}	
-	// ¶¨ÒåÒ»¸öÏÔÊ¾Ö¸¶¨×é¼şµÄ¶Ô»°¿ò
+	// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ê¾Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶Ô»ï¿½ï¿½ï¿½
 	public static void showDialog(Context ctx , View view)
 	{
 		AlertDialog.Builder builder = new AlertDialog.Builder(ctx)
 			.setView(view).setCancelable(false)
-			.setPositiveButton("È·¶¨", null);
+			.setPositiveButton("È·ï¿½ï¿½", null);
 		builder.create()
 			.show();
 	}

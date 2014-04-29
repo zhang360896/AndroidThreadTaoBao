@@ -109,7 +109,7 @@ public class MipcaActivityCapture extends Activity implements Callback {
 	}
 	
 	/**
-	 * 处理扫描结果
+	 * 澶勭悊鎵弿缁撴灉
 	 * @param result
 	 * @param barcode
 	 */

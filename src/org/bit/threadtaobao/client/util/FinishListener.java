@@ -1,4 +1,4 @@
-/**
+ï»¿/**
  * 
  */
 package org.bit.threadtaobao.client.util;
@@ -8,8 +8,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 /**
+/**
  * Description:
- * <br/>ÍøÕ¾: <a href="http://www.crazyit.org">·è¿ñJavaÁªÃË</a> 
+ * <br/>ç½‘ç«™: <a href="http://www.crazyit.org">ç–¯ç‹‚Javaè”ç›Ÿ</a> 
  * <br/>Copyright (C), 2001-2012, Yeeku.H.Lee
  * <br/>This program is protected by copyright laws.
  * <br/>Program Name:
@@ -17,7 +18,7 @@ import android.view.View.OnClickListener;
  * @author  Yeeku.H.Lee kongyeeku@163.com
  * @version  1.0
  */
-// ¶¨ÒåÒ»¸ö½áÊøµ±Ç°ActivityµÄ
+// å®šä¹‰ä¸€ä¸ªç»“æŸå½“å‰Activityçš„
 public class FinishListener implements OnClickListener
 {
 	private Activity activity;
@@ -28,7 +29,7 @@ public class FinishListener implements OnClickListener
 	@Override
 	public void onClick(View source)
 	{
-		// ½áÊøµ±Ç°Activity
+		//ç»“æŸActivity
 		activity.finish();
 	}
 }

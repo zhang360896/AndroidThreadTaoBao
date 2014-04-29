@@ -1,4 +1,4 @@
-package org.bit.threadtaobao.client;
+Ôªøpackage org.bit.threadtaobao.client;
 
 import org.bit.threadtaobao.client.util.DialogUtil;
 
@@ -23,7 +23,7 @@ public class OrderListView extends Activity {
 	
 	public void init() {
 		orderListView = (ListView) findViewById(R.id.order_listView);
-		String[] array = {"∂©µ•1","∂©µ•2","∂©µ•3"};
+		String[] array = {"ËÆ¢Âçï1","ËÆ¢Âçï2","ËÆ¢Âçï3"};
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, array);
 		orderListView.setAdapter(arrayAdapter);
 		orderListView.setOnItemClickListener(new OnItemClickListener() {

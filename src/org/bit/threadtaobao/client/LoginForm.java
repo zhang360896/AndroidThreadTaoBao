@@ -27,44 +27,44 @@ import android.widget.EditText;
  */
 public class LoginForm extends Activity
 {
-	// ¶¨Òå½çÃæÖĞÁ½¸öÎÄ±¾¿ò
+	// å®šä¹‰ç•Œé¢ä¸­ä¸¤ä¸ªæ–‡æœ¬æ¡†
 	EditText etName, etPass;
-	// ¶¨Òå½çÃæÖĞÁ½¸ö°´Å¥
+	// å®šä¹‰ç•Œé¢ä¸­ä¸¤ä¸ªæŒ‰é’®
 	Button bnLogin, bnCancel;
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
-		// »ñÈ¡½çÃæÖĞÁ½¸ö±à¼­¿ò
+		// è·å–ç•Œé¢ä¸­ä¸¤ä¸ªç¼–è¾‘æ¡†
 		etName = (EditText) findViewById(R.id.userEditText);
 		etPass = (EditText) findViewById(R.id.pwdEditText);
-		// »ñÈ¡½çÃæÖĞµÄÁ½¸ö°´Å¥
+		// è·å–ç•Œé¢ä¸­çš„ä¸¤ä¸ªæŒ‰é’®
 		bnLogin = (Button) findViewById(R.id.bnLogin);
 		bnCancel = (Button) findViewById(R.id.bnCancel);
-		// ÎªbnCancal°´Å¥µÄµ¥»÷ÊÂ¼ş°ó¶¨ÊÂ¼ş¼àÌıÆ÷
+		// ä¸ºbnCancalæŒ‰é’®çš„å•å‡»äº‹ä»¶ç»‘å®šäº‹ä»¶ç›‘å¬å™¨
 		bnCancel.setOnClickListener(new FinishListener(this));
 		bnLogin.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
-				// Ö´ĞĞÊäÈëĞ£Ñé
+				// æ‰§è¡Œè¾“å…¥æ ¡éªŒ
 				if (validate())
 				{
-					// Èç¹ûµÇÂ¼³É¹¦
+					// å¦‚æœç™»å½•æˆåŠŸ
 //					if (loginPro())
 					{
-						// Æô¶¯Main Activity
+						// å¯åŠ¨Main Activity
 						Intent intent = new Intent(LoginForm.this, MainForm.class);
 						startActivity(intent);
-						// ½áÊø¸ÃActivity
+						// ç»“æŸè¯¥Activity
 						finish();
 					}
 //					else
 //					{
 //						DialogUtil.showDialog(Login.this
-//							, "ÓÃ»§Ãû³Æ»òÕßÃÜÂë´íÎó£¬ÇëÖØĞÂÊäÈë£¡", false);
+//							, "ç”¨æˆ·åç§°æˆ–è€…å¯†ç é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼", false);
 //					}
 				}
 			}
@@ -73,14 +73,14 @@ public class LoginForm extends Activity
 
 //	private boolean loginPro()
 //	{
-//		// »ñÈ¡ÓÃ»§ÊäÈëµÄÓÃ»§Ãû¡¢ÃÜÂë
+//		// ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //		String username = etName.getText().toString();
 //		String pwd = etPass.getText().toString();
 //		JSONObject jsonObj;
 //		try
 //		{
 //			jsonObj = query(username, pwd);
-//			// Èç¹ûuserId ´óÓÚ0
+//			// ï¿½ï¿½ï¿½userId ï¿½ï¿½ï¿½ï¿½0
 //			if (jsonObj.getInt("userId") > 0)
 //			{
 //				return true;
@@ -88,26 +88,26 @@ public class LoginForm extends Activity
 //		}
 //		catch (Exception e)
 //		{
-//			DialogUtil.showDialog(this, "·şÎñÆ÷ÏìÓ¦Òì³££¬ÇëÉÔºóÔÙÊÔ£¡", false);
+//			DialogUtil.showDialog(this, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½Ô£ï¿½", false);
 //			e.printStackTrace();
 //		}
 //
 //		return false;
 //	}
 
-	// ¶ÔÓÃ»§ÊäÈëµÄÓÃ»§Ãû¡¢ÃÜÂë½øĞĞĞ£Ñé
+	// ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ£ï¿½ï¿½
 	private boolean validate()
 	{
 		String username = etName.getText().toString().trim();
 		if (username.equals(""))
 		{
-			DialogUtil.showDialog(this, "ÓÃ»§ÕË»§ÊÇ±ØÌîÏî£¡", false);
+			DialogUtil.showDialog(this, "ï¿½Ã»ï¿½ï¿½Ë»ï¿½ï¿½Ç±ï¿½ï¿½ï¿½ï¿½î£¡", false);
 			return false;
 		}
 		String pwd = etPass.getText().toString().trim();
 		if (pwd.equals(""))
 		{
-			DialogUtil.showDialog(this, "ÓÃ»§¿ÚÁîÊÇ±ØÌîÏî£¡", false);
+			DialogUtil.showDialog(this, "ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½ï¿½î£¡", false);
 			return false;
 		}
 		return true;
@@ -115,13 +115,13 @@ public class LoginForm extends Activity
 	
 	private void confirmExit() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(LoginForm.this);
-		builder.setTitle("ÍË³öÈí¼ş").setMessage("ÊÇ·ñÍË³öÈí¼ş?")
-				.setPositiveButton("ÊÇ", new DialogInterface.OnClickListener() {
+		builder.setTitle("ï¿½Ë³ï¿½ï¿½ï¿½ï¿½").setMessage("ï¿½Ç·ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½?")
+				.setPositiveButton("ï¿½ï¿½", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						LoginForm.this.finish();
 					}
 				})
-				.setNegativeButton("·ñ", new DialogInterface.OnClickListener() {
+				.setNegativeButton("ï¿½ï¿½", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 					}
 				}).show(); 

@@ -16,11 +16,11 @@ import android.widget.TextView;
 public class TwoDimenCodeScan extends Activity {
 	private final static int SCANNIN_GREQUEST_CODE = 1;
 	/**
-	 * ÏÔÊ¾É¨Ãè½á¹û
+	 * æ˜¾ç¤ºæ‰«æç»“æœ
 	 */
 	private TextView mTextView ;
 	/**
-	 * ÏÔÊ¾É¨ÃèÅÄµÄÍ¼Æ¬
+	 * æ˜¾ç¤ºæ‰«ææ‹çš„å›¾ç‰‡
 	 */
 	private ImageView mImageView;
 	
@@ -33,8 +33,8 @@ public class TwoDimenCodeScan extends Activity {
 		mTextView = (TextView) findViewById(R.id.result); 
 		mImageView = (ImageView) findViewById(R.id.qrcode_bitmap);
 		
-		//µã»÷°´Å¥Ìø×ªµ½¶şÎ¬ÂëÉ¨Ãè½çÃæ£¬ÕâÀïÓÃµÄÊÇstartActivityForResultÌø×ª
-		//É¨ÃèÍêÁËÖ®ºóµ÷µ½¸Ã½çÃæ
+		//ç‚¹å‡»æŒ‰é’®è·³è½¬åˆ°äºŒç»´ç æ‰«æç•Œé¢ï¼Œè¿™é‡Œç”¨çš„æ˜¯startActivityForResultè·³è½¬
+		//æ‰«æå®Œäº†ä¹‹åè°ƒåˆ°è¯¥ç•Œé¢
 		Button mButton = (Button) findViewById(R.id.code_scan_button);
 		mButton.setOnClickListener(new OnClickListener() {
 			
@@ -56,9 +56,9 @@ public class TwoDimenCodeScan extends Activity {
 		case SCANNIN_GREQUEST_CODE:
 			if(resultCode == RESULT_OK){
 				Bundle bundle = data.getExtras();
-				//ÏÔÊ¾É¨Ãèµ½µÄÄÚÈİ
+				//æ˜¾ç¤ºæ‰«æåˆ°çš„å†…å®¹
 				mTextView.setText(bundle.getString("result"));
-				//ÏÔÊ¾
+				//æ˜¾ç¤º
 				mImageView.setImageBitmap((Bitmap) data.getParcelableExtra("bitmap"));
 			}
 			break;
