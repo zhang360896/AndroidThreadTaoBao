@@ -1,6 +1,7 @@
-package org.bit.threadtaobao.client;
+package org.bit.threadtaobao.view;
 
-import org.bit.threadtaobao.client.util.DialogUtil;
+import org.bit.threadtaobao.client.R;
+import org.bit.threadtaobao.util.DialogUtil;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 public class ShoppingCartView extends Activity {
 
 	private ListView shoppingcartListView = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -21,7 +23,7 @@ public class ShoppingCartView extends Activity {
 		setContentView(R.layout.shoppingcart);
 		init();
 	}
-	
+	//初始化界面
 	public void init() {
 		shoppingcartListView = (ListView) findViewById(R.id.shoppingcart_listView);
 		String[] array = {"商品1","商品2","商品3"};

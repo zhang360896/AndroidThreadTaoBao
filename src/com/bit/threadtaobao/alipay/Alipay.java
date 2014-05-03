@@ -15,6 +15,7 @@ import org.bit.threadtaobao.client.R;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -37,82 +38,34 @@ import android.widget.Toast;
  * 
  * @version v4_0413 2012-03-02
  */
-public class AlixDemo extends Activity implements OnItemClickListener,
-		OnItemLongClickListener {
-	static String TAG = "AppDemo4";
-
-	//
-	// 模拟商户商品列表
-	ListView mproductListView = null;
-	ProductListAdapter m_listViewAdapter = null;
-	ArrayList<Products.ProductDetail> mproductlist;
-
+public class Alipay {
+	static String TAG = "Alipay";
+	Activity activity = null;
 	private ProgressDialog mProgress = null;
-
-	//
-	// Called when the activity is first created.
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		Log.v(TAG, "onCreate");
-
-		//
-		// check to see if the MobileSecurePay is already installed.
-		// 检测安全支付服务是否被安装
-		MobileSecurePayHelper mspHelper = new MobileSecurePayHelper(this);
-		mspHelper.detectMobile_sp();
-
-		//
-		setContentView(R.layout.remote_service_binding);
-
-		//
-		// set title
-		// 设置界面标题
-		TextView mTitleName = (TextView) findViewById(R.id.AlipayTitleItemName);
-		mTitleName.setText(getString(R.string.app_name));
-
-		//
-		// retrieve and show the product list.
-		// 显示商品列表
-		initProductList();
-	}
-
-	/**
-	 * retrieve the product list. 
-	 * 设置商品列表
-	 */
-	void initProductList() {
-		Products products = new Products();
-		this.mproductlist = products.retrieveProductInfo();
-
-		mproductListView = (ListView) findViewById(R.id.ProductListView);
-		m_listViewAdapter = new ProductListAdapter(this, this.mproductlist);
-		mproductListView.setAdapter(m_listViewAdapter);
-		mproductListView.setOnItemClickListener(this);
-		mproductListView.setOnItemLongClickListener(this);
+	
+	public Alipay(Activity activity) {
+		this.activity = activity;
 	}
 
 	/**
 	 * get the selected order info for pay. 获取商品订单信息
 	 * 
-	 * @param position
-	 *            商品在列表中的位置
 	 * @return
 	 */
-	String getOrderInfo(int position) {
+	String getOrderInfo(String subject, String body, String price) {
 		String strOrderInfo = "partner=" + "\"" + PartnerConfig.PARTNER + "\"";
 		strOrderInfo += "&";
 		strOrderInfo += "seller=" + "\"" + PartnerConfig.SELLER + "\"";
 		strOrderInfo += "&";
 		strOrderInfo += "out_trade_no=" + "\"" + getOutTradeNo() + "\"";
 		strOrderInfo += "&";
-		strOrderInfo += "subject=" + "\"" + mproductlist.get(position).subject
+		strOrderInfo += "subject=" + "\"" + subject
 				+ "\"";
 		strOrderInfo += "&";
-		strOrderInfo += "body=" + "\"" + mproductlist.get(position).body + "\"";
+		strOrderInfo += "body=" + "\"" + body + "\"";
 		strOrderInfo += "&";
 		strOrderInfo += "total_fee=" + "\""
-				+ mproductlist.get(position).price.replace("一口价:", "") + "\"";
+				+ price + "\"";
 		strOrderInfo += "&";
 		strOrderInfo += "notify_url=" + "\""
 				+ "http://notify.java.jpxx.org/index.jsp" + "\"";
@@ -173,16 +126,11 @@ public class AlixDemo extends Activity implements OnItemClickListener,
 		return charset;
 	}
 
-	/**
-	 * the onItemClick for the list view of the products.
-	 * 商品列表商品被点击事件
-	 */
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
+	public void alipay(String subject, String body, String price) {
 		//
 		// check to see if the MobileSecurePay is already installed.
 		// 检测安全支付服务是否安装
-		MobileSecurePayHelper mspHelper = new MobileSecurePayHelper(this);
+		MobileSecurePayHelper mspHelper = new MobileSecurePayHelper(activity);
 		boolean isMobile_spExist = mspHelper.detectMobile_sp();
 		if (!isMobile_spExist)
 			return;
@@ -192,7 +140,7 @@ public class AlixDemo extends Activity implements OnItemClickListener,
 		if (!checkInfo()) {
 			BaseHelper
 					.showDialog(
-							AlixDemo.this,
+							activity,
 							"提示",
 							"缺少partner或者seller，请在src/com/alipay/android/appDemo4/PartnerConfig.java中增加。",
 							R.drawable.infoicon);
@@ -204,7 +152,7 @@ public class AlixDemo extends Activity implements OnItemClickListener,
 		try {
 			// prepare the order info.
 			// 准备订单信息
-			String orderInfo = getOrderInfo(position);
+			String orderInfo = getOrderInfo(subject, body, price);
 			// 这里根据签名方式对订单信息进行签名
 			String signType = getSignType();
 			String strsign = sign(signType, orderInfo);
@@ -216,26 +164,21 @@ public class AlixDemo extends Activity implements OnItemClickListener,
 			// start the pay.
 			// 调用pay方法进行支付
 			MobileSecurePayer msp = new MobileSecurePayer();
-			boolean bRet = msp.pay(info, mHandler, AlixId.RQF_PAY, this);
+			boolean bRet = msp.pay(info, mHandler, AlixId.RQF_PAY, activity);
 
 			if (bRet) {
 				// show the progress bar to indicate that we have started
 				// paying.
 				// 显示“正在支付”进度条
 				closeProgress();
-				mProgress = BaseHelper.showProgress(this, null, "正在支付", false,
+				mProgress = BaseHelper.showProgress(activity, null, "正在支付", false,
 						true);
 			} else
 				;
 		} catch (Exception ex) {
-			Toast.makeText(AlixDemo.this, R.string.remote_call_failed,
+			Toast.makeText(activity, R.string.remote_call_failed,
 					Toast.LENGTH_SHORT).show();
 		}
-	}
-
-	public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
-			long id) {
-		return false;
 	}
 
 	/**
@@ -285,20 +228,20 @@ public class AlixDemo extends Activity implements OnItemClickListener,
 						// 返回验签结果以及交易状态
 						if (retVal == ResultChecker.RESULT_CHECK_SIGN_FAILED) {
 							BaseHelper.showDialog(
-									AlixDemo.this,
+									activity,
 									"提示",
-									getResources().getString(
+									activity.getResources().getString(
 											R.string.check_sign_failed),
 									android.R.drawable.ic_dialog_alert);
 						} else {
-							BaseHelper.showDialog(AlixDemo.this, "提示", memo,
+							BaseHelper.showDialog(activity, "提示", memo,
 									R.drawable.infoicon);
 						}
 
 					} catch (Exception e) {
 						e.printStackTrace();
 
-						BaseHelper.showDialog(AlixDemo.this, "提示", strRet,
+						BaseHelper.showDialog(activity, "提示", strRet,
 								R.drawable.infoicon);
 					}
 				}
@@ -330,7 +273,6 @@ public class AlixDemo extends Activity implements OnItemClickListener,
 			mcontext.onKeyDown(KeyEvent.KEYCODE_BACK, null);
 		}
 	}
-
 	//
 	// close the progress bar
 	// 关闭进度框
@@ -345,30 +287,4 @@ public class AlixDemo extends Activity implements OnItemClickListener,
 		}
 	}
 
-	/**
-	 * 返回键监听事件
-	 */
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			BaseHelper.log(TAG, "onKeyDown back");
-
-			this.finish();
-			return true;
-		}
-
-		return false;
-	}
-
-	//
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
-		Log.v(TAG, "onDestroy");
-
-		try {
-			mProgress.dismiss();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }

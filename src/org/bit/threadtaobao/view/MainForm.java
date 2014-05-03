@@ -1,8 +1,11 @@
-package org.bit.threadtaobao.client;
+package org.bit.threadtaobao.view;
 
 
-import org.bit.threadtaobao.client.location.MyLocation;
-import org.bit.threadtaobao.twodimencodescan.TwoDimenCodeScan;
+import org.bit.threadtaobao.client.R;
+import org.bit.threadtaobao.codescan.CodeScan;
+import org.bit.threadtaobao.location.MyLocation;
+
+import com.bit.threadtaobao.alipay.Alipay;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -26,7 +29,7 @@ import android.widget.ListView;
 public class MainForm extends Activity
 {
 	ListView mainMenu;
-
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -52,10 +55,10 @@ public class MainForm extends Activity
 					// 扫一扫
 					case 1:
 						// 启动TwoDimenCodeScan Activity
-						intent = new Intent(MainForm.this, TwoDimenCodeScan.class);
+						intent = new Intent(MainForm.this, CodeScan.class);
 						startActivity(intent);
 						break;
-					// 查看购物车ﳵ
+					// 我的购物车
 					case 2:
 						// 启动ViewShoppingCart Activity
 						intent = new Intent(MainForm.this, ShoppingCartView.class);
@@ -72,6 +75,8 @@ public class MainForm extends Activity
 						// 启动MyLocation Activity
 						intent = new Intent(MainForm.this, MyLocation.class);
 						startActivity(intent);
+//						Alipay alipay = new Alipay(MainForm.this);
+//						alipay.alipay("iphone5s", "iphone5s 土豪金", "5800");
 						break;
 					// 退出登录
 					case 5:

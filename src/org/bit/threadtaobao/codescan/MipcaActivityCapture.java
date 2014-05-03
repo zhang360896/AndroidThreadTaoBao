@@ -1,4 +1,4 @@
-package org.bit.threadtaobao.twodimencodescan;
+package org.bit.threadtaobao.codescan;
 
 import java.io.IOException;
 import java.util.Vector;

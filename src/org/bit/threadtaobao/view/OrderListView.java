@@ -1,6 +1,7 @@
-﻿package org.bit.threadtaobao.client;
+﻿package org.bit.threadtaobao.view;
 
-import org.bit.threadtaobao.client.util.DialogUtil;
+import org.bit.threadtaobao.client.R;
+import org.bit.threadtaobao.util.DialogUtil;
 
 import android.app.Activity;
 import android.os.Bundle;

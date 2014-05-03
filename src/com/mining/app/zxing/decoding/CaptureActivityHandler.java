@@ -19,7 +19,7 @@ package com.mining.app.zxing.decoding;
 import java.util.Vector;
 
 import org.bit.threadtaobao.client.R;
-import org.bit.threadtaobao.twodimencodescan.MipcaActivityCapture;
+import org.bit.threadtaobao.codescan.MipcaActivityCapture;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -88,7 +88,7 @@ public final class CaptureActivityHandler extends Handler {
         Bitmap barcode = bundle == null ? null :
             (Bitmap) bundle.getParcelable(DecodeThread.BARCODE_BITMAP);//���ñ����߳�
         
-        activity.handleDecode((Result) message.obj, barcode);//���ؽ��?        /***********************************************************************/
+        activity.handleDecode((Result) message.obj, barcode);//���ؽ��?        /***********************************************************************/
         break;
       case R.id.decode_failed:
         // We're decoding as fast as possible, so when one decode fails, start another.

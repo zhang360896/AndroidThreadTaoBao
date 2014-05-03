@@ -20,7 +20,7 @@ import java.util.Hashtable;
 import java.util.Vector;
 import java.util.concurrent.CountDownLatch;
 
-import org.bit.threadtaobao.twodimencodescan.MipcaActivityCapture;
+import org.bit.threadtaobao.codescan.MipcaActivityCapture;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -31,7 +31,7 @@ import com.google.zxing.ResultPointCallback;
 
 /**
  * This thread does all the heavy lifting of decoding the images.
- * ½âÂëÏß³Ì
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
  */
 final class DecodeThread extends Thread {
 

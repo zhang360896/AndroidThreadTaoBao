@@ -1,4 +1,4 @@
-package org.bit.threadtaobao.client;
+package org.bit.threadtaobao.view;
 
 public class OrderDetailView {
 

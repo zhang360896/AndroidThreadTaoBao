@@ -1,7 +1,7 @@
 ﻿/**
  * 
  */
-package org.bit.threadtaobao.client.util;
+package org.bit.threadtaobao.util;
 
 import android.app.AlertDialog;
 import android.content.Context;

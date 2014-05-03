@@ -1,7 +1,8 @@
-package org.bit.threadtaobao.twodimencodescan;
+package org.bit.threadtaobao.codescan;
 
 
 import org.bit.threadtaobao.client.R;
+import org.bit.threadtaobao.mainobjects.Goods;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,7 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class TwoDimenCodeScan extends Activity {
+public class CodeScan extends Activity {
 	private final static int SCANNIN_GREQUEST_CODE = 1;
 	/**
 	 * 显示扫描结果
@@ -24,7 +25,8 @@ public class TwoDimenCodeScan extends Activity {
 	 */
 	private ImageView mImageView;
 	
-
+	private Goods result;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,7 +43,7 @@ public class TwoDimenCodeScan extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(TwoDimenCodeScan.this, MipcaActivityCapture.class);
+				intent.setClass(CodeScan.this, MipcaActivityCapture.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivityForResult(intent, SCANNIN_GREQUEST_CODE);
 			}

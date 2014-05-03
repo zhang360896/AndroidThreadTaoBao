@@ -13,7 +13,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name">
         <activity
-            android:name=".LoginForm"
+            android:name="org.bit.threadtaobao.view.LoginForm"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,23 +21,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainForm"
+        <activity android:name="org.bit.threadtaobao.view.MainForm"
 				  android:label="@string/app_name">
 		</activity>
-		<activity android:name=".UserProfile"
+		<activity android:name="org.bit.threadtaobao.view.UserProfile"
 				  android:label="@string/app_name">
 		</activity>
-		<activity android:name="org.bit.threadtaobao.twodimencodescan.TwoDimenCodeScan"
+		<activity android:name="org.bit.threadtaobao.codescan.CodeScan"
 				  android:label="@string/app_name">
 		</activity>
-		<activity android:name=".ShoppingCartView"
+		<activity android:name="org.bit.threadtaobao.view.ShoppingCartView"
 				  android:label="@string/app_name">
 		</activity>
-		<activity android:name=".OrderListView"
+		<activity android:name="org.bit.threadtaobao.view.OrderListView"
 				  android:label="@string/app_name">
 		</activity>
 		<activity
-            android:name="org.bit.threadtaobao.twodimencodescan.MipcaActivityCapture"
+            android:name="org.bit.threadtaobao.codescan.MipcaActivityCapture"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >

@@ -1,4 +1,4 @@
-package org.bit.threadtaobao.client.location;
+package org.bit.threadtaobao.location;
 
 import android.app.Activity;
 import android.os.Bundle;

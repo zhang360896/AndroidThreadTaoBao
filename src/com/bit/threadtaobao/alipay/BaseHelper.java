@@ -129,7 +129,7 @@ public class BaseHelper {
 		dialog.setIndeterminate(indeterminate);
 		dialog.setCancelable(false);
 		// dialog.setDefaultButton(false);
-		dialog.setOnCancelListener(new AlixDemo.AlixOnCancelListener(
+		dialog.setOnCancelListener(new Alipay.AlixOnCancelListener(
 				(Activity) context));
 
 		dialog.show();
