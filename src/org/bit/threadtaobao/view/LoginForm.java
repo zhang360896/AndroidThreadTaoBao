@@ -1,6 +1,7 @@
 package org.bit.threadtaobao.view;
 
 import org.bit.threadtaobao.client.R;
+import org.bit.threadtaobao.mainobjects.User;
 import org.bit.threadtaobao.util.DialogUtil;
 import org.bit.threadtaobao.util.FinishListener;
 
@@ -17,14 +18,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 /**
- * Description:
- * <br/>site: <a href="http://www.crazyit.org">crazyit.org</a> 
- * <br/>Copyright (C), 2001-2012, Yeeku.H.Lee
- * <br/>This program is protected by copyright laws.
- * <br/>Program Name:
- * <br/>Date:
- * @author  Yeeku.H.Lee kongyeeku@163.com
- * @version  1.0
+ * 
+ * @author jmm
+ *
  */
 public class LoginForm extends Activity
 {
@@ -51,78 +47,68 @@ public class LoginForm extends Activity
 			public void onClick(View v)
 			{
 				// 执行输入校验
-				if (validate())
-				{
-					// 如果登录成功
-//					if (loginPro())
-					{
+				//用户名密码非空
+//				if (validateNotNull()) {
+//					//用户名密码正确
+//					if(validate()) {
 						// 启动Main Activity
 						Intent intent = new Intent(LoginForm.this, MainForm.class);
 						startActivity(intent);
 						// 结束该Activity
 						finish();
-					}
-//					else
-//					{
-//						DialogUtil.showDialog(Login.this
+//					}
+//					else {
+//						DialogUtil.showDialog(LoginForm.this
 //							, "用户名称或者密码错误，请重新输入！", false);
 //					}
-				}
+//				}
 			}
 		});
 	}
 
-//	private boolean loginPro()
-//	{
-//		// ��ȡ�û�������û�������
-//		String username = etName.getText().toString();
-//		String pwd = etPass.getText().toString();
-//		JSONObject jsonObj;
-//		try
-//		{
-//			jsonObj = query(username, pwd);
-//			// ���userId ����0
-//			if (jsonObj.getInt("userId") > 0)
-//			{
-//				return true;
-//			}
-//		}
-//		catch (Exception e)
-//		{
-//			DialogUtil.showDialog(this, "��������Ӧ�쳣�����Ժ����ԣ�", false);
-//			e.printStackTrace();
-//		}
-//
-//		return false;
-//	}
 
-	// ���û�������û����������У��
-	private boolean validate()
+
+	//对用户名和密码进行校验
+	private boolean validateNotNull()
 	{
 		String username = etName.getText().toString().trim();
 		if (username.equals(""))
 		{
-			DialogUtil.showDialog(this, "�û��˻��Ǳ����", false);
+			DialogUtil.showDialog(this, "用户名是必填项！", false);
 			return false;
 		}
 		String pwd = etPass.getText().toString().trim();
 		if (pwd.equals(""))
 		{
-			DialogUtil.showDialog(this, "�û������Ǳ����", false);
+			DialogUtil.showDialog(this, "密码是必填项！", false);
 			return false;
 		}
 		return true;
 	}
 	
+	//校验用户名密码
+	private boolean validate()
+	{
+		String username = etName.getText().toString().trim();
+		String pwd = etPass.getText().toString().trim();
+		User user = new User(username,pwd);
+		if (user.login()) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
 	private void confirmExit() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(LoginForm.this);
-		builder.setTitle("�˳����").setMessage("�Ƿ��˳����?")
-				.setPositiveButton("��", new DialogInterface.OnClickListener() {
+		builder.setTitle("警告").setMessage("您确定要退出吗？")
+				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						LoginForm.this.finish();
 					}
 				})
-				.setNegativeButton("��", new DialogInterface.OnClickListener() {
+				.setNegativeButton("取消", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 					}
 				}).show(); 

@@ -20,24 +20,22 @@ public class CodeScan extends Activity {
 	 * 显示扫描结果
 	 */
 	private TextView mTextView ;
-	/**
-	 * 显示扫描拍的图片
-	 */
-	private ImageView mImageView;
 	
 	private Goods result;
+	private Button mButton;
+	private Button addToShoppingCartButton;
+	private Button deleteGoodsButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.code_scan);
 		
-		mTextView = (TextView) findViewById(R.id.result); 
-		mImageView = (ImageView) findViewById(R.id.qrcode_bitmap);
+		mTextView = (TextView) findViewById(R.id.result);
 		
 		//点击按钮跳转到二维码扫描界面，这里用的是startActivityForResult跳转
 		//扫描完了之后调到该界面
-		Button mButton = (Button) findViewById(R.id.code_scan_button);
+		mButton = (Button) findViewById(R.id.code_scan_button);
 		mButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -48,6 +46,37 @@ public class CodeScan extends Activity {
 				startActivityForResult(intent, SCANNIN_GREQUEST_CODE);
 			}
 		});
+		
+		addToShoppingCartButton = (Button) findViewById(R.id.addToShoppingCart);
+		addToShoppingCartButton.setVisibility(View.INVISIBLE);
+		addToShoppingCartButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				String[] goodsInfo = mTextView.getText().toString().trim().split(";");
+//				Goods goods = new Goods(goodsInfo[0], goodsInfo[1], goodsInfo[2], goodsInfo[3], goodsInfo[5], goodsInfo[4]);
+				addToShoppingCartButton.setVisibility(View.INVISIBLE);
+				deleteGoodsButton.setVisibility(View.INVISIBLE);
+				mTextView.setText("");
+			}
+		});
+		
+		
+		deleteGoodsButton = (Button) findViewById(R.id.deleteGoods);
+		deleteGoodsButton.setVisibility(View.INVISIBLE);
+		deleteGoodsButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				addToShoppingCartButton.setVisibility(View.INVISIBLE);
+				deleteGoodsButton.setVisibility(View.INVISIBLE);
+				mTextView.setText("");
+			}
+		});
+		
+		
 	}
 	
 	
@@ -58,10 +87,10 @@ public class CodeScan extends Activity {
 		case SCANNIN_GREQUEST_CODE:
 			if(resultCode == RESULT_OK){
 				Bundle bundle = data.getExtras();
-				//显示扫描到的内容
-				mTextView.setText(bundle.getString("result"));
-				//显示
-				mImageView.setImageBitmap((Bitmap) data.getParcelableExtra("bitmap"));
+				//显示扫描到的商品内容
+				mTextView.setText(bundle.getString("result").replace("\n", ";"));
+				addToShoppingCartButton.setVisibility(View.VISIBLE);
+				deleteGoodsButton.setVisibility(View.VISIBLE);
 			}
 			break;
 		}

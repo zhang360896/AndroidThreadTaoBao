@@ -12,6 +12,12 @@ public class User {
 		this.username = username;
 	}
 	
+	public User( String username, String password) {
+		super();
+		this.password = password;
+		this.username = username;
+	}
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -28,27 +34,30 @@ public class User {
 		return username;
 	}
 
-	private void login(){
+	public boolean login(){
+		if (username.equals("admin") && password.equals("admin")) {
+			return true;
+		}
+		return false;
+	}
+	
+	public void logout(){
 		
 	}
 	
-	private void logout(){
+	public void register(){
 		
 	}
 	
-	private void register(){
+	public void viewShoppingCart(){
 		
 	}
 	
-	private void viewShoppingCart(){
+	public void viewOrders(){
 		
 	}
 	
-	private void viewOrders(){
-		
-	}
-	
-	private void viewLocation(){
+	public void viewLocation(){
 		
 	}
 	

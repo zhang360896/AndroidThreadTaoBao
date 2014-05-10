@@ -5,8 +5,6 @@ import org.bit.threadtaobao.client.R;
 import org.bit.threadtaobao.codescan.CodeScan;
 import org.bit.threadtaobao.location.MyLocation;
 
-import com.bit.threadtaobao.alipay.Alipay;
-
 import android.app.Activity;
 import android.content.Intent;
 
