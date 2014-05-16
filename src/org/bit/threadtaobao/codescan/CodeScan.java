@@ -46,7 +46,7 @@ public class CodeScan extends Activity {
 				startActivityForResult(intent, SCANNIN_GREQUEST_CODE);
 			}
 		});
-		//cc test 
+		//cc test 2
 		addToShoppingCartButton = (Button) findViewById(R.id.addToShoppingCart);
 		addToShoppingCartButton.setVisibility(View.INVISIBLE);
 		addToShoppingCartButton.setOnClickListener(new OnClickListener() {
