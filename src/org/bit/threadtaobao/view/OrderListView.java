@@ -1,4 +1,4 @@
-﻿package org.bit.threadtaobao.view;
+package org.bit.threadtaobao.view;
 
 import org.bit.threadtaobao.client.R;
 import org.bit.threadtaobao.util.DialogUtil;
