@@ -1,4 +1,4 @@
-﻿package com.bit.threadtaobao.alipay;
+package com.bit.threadtaobao.alipay;
 public class PartnerConfig {
 
 	// 合作商户ID。用签约支付宝账号登录ms.alipay.com后，在账户信息页面获取。
