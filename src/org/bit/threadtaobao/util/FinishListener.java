@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 
  */
 package org.bit.threadtaobao.util;
