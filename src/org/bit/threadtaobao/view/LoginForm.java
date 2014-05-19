@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -26,18 +27,24 @@ public class LoginForm extends Activity
 	// 定义界面中两个文本框
 	EditText etName, etPass;
 	// 定义界面中两个按钮
-	Button bnLogin, bnCancel;
+	Button bnLogin, bnCancel, bnRegister;
+	public static SQLiteDatabase db;
+	User user;
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
+		// open sqlite database
+		db = SQLiteDatabase.openOrCreateDatabase(this.getFilesDir()
+				.toString() + "/thread_db.db3", null);
 		// 获取界面中两个编辑框
 		etName = (EditText) findViewById(R.id.userEditText);
 		etPass = (EditText) findViewById(R.id.pwdEditText);
 		// 获取界面中的两个按钮
 		bnLogin = (Button) findViewById(R.id.bnLogin);
 		bnCancel = (Button) findViewById(R.id.bnCancel);
+		bnRegister = (Button) findViewById(R.id.bnRegister);
 		// 为bnCancal按钮的单击事件绑定事件监听器
 		bnCancel.setOnClickListener(new FinishListener(this));
 		bnLogin.setOnClickListener(new OnClickListener()
@@ -47,25 +54,45 @@ public class LoginForm extends Activity
 			{
 				// 执行输入校验
 				//用户名密码非空
-//				if (validateNotNull()) {
-//					//用户名密码正确
-//					if(validate()) {
+				if (validateNotNull()) {
+					//用户名密码正确
+					if(validateLogin()) {
 						// 启动Main Activity
 						Intent intent = new Intent(LoginForm.this, MainForm.class);
 						startActivity(intent);
 						// 结束该Activity
 						finish();
-//					}
-//					else {
-//						DialogUtil.showDialog(LoginForm.this
-//							, "用户名称或者密码错误，请重新输入！", false);
-//					}
-//				}
+					}
+					else {
+						DialogUtil.showDialog(LoginForm.this
+							, "用户名称或者密码错误，请重新输入！", false);
+					}
+				}
 			}
 		});
+		
+		bnRegister.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				// 执行输入校验
+				//用户名密码非空
+				if (validateNotNull()) {
+					//用户名是否已存在
+					if(validateRegister()) {
+						DialogUtil.showDialog(LoginForm.this
+								, "注册成功！", false);
+					}
+					else {
+						DialogUtil.showDialog(LoginForm.this
+							, "用户名已存在，请重新输入！", false);
+					}
+				}
+			}
+		});
+		
 	}
-
-
 
 	//对用户名和密码进行校验
 	private boolean validateNotNull()
@@ -86,11 +113,27 @@ public class LoginForm extends Activity
 	}
 	
 	//校验用户名密码
-	private boolean validate()
+	private boolean validateRegister()
 	{
 		String username = etName.getText().toString().trim();
 		String pwd = etPass.getText().toString().trim();
-		User user = new User(username,pwd);
+		user = new User(username,pwd);
+		
+		if (user.register()) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
+	//校验用户名密码
+	private boolean validateLogin()
+	{
+		String username = etName.getText().toString().trim();
+		String pwd = etPass.getText().toString().trim();
+		user = new User(username,pwd);
+		
 		if (user.login()) {
 			return true;
 		} else {
@@ -121,5 +164,13 @@ public class LoginForm extends Activity
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if (db != null && db.isOpen()) {
+			db.close();
+		}
+	}
 }

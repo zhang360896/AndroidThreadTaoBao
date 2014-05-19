@@ -43,6 +43,7 @@
 	
 	
 	<string name="Ensure">"确定"</string>
+	<string name="register">"注册"</string>
 	<string name="Cancel">"取消"</string>
 	<string name="check_sign_failed">您的订单信息已被非法篡改。</string>
 </resources>
