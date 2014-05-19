@@ -18,8 +18,8 @@ package com.mining.app.zxing.decoding;
 
 import java.util.Vector;
 
-import org.bit.threadtaobao.client.R;
 import org.bit.threadtaobao.codescan.MipcaActivityCapture;
+import org.bit.threadtaobao.view.R;
 
 import android.app.Activity;
 import android.content.Intent;

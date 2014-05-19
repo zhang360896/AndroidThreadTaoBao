@@ -1,7 +1,5 @@
 package org.bit.threadtaobao.view;
 
-import org.bit.threadtaobao.client.R;
-
 import android.app.Activity;
 import android.os.Bundle;
 

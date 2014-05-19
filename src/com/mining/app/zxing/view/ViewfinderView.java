@@ -19,8 +19,7 @@ package com.mining.app.zxing.view;
 import java.util.Collection;
 import java.util.HashSet;
 
-import org.bit.threadtaobao.client.R;
-
+import org.bit.threadtaobao.view.R;
 
 import android.content.Context;
 import android.content.res.Resources;

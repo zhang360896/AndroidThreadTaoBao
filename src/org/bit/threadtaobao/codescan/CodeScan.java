@@ -1,8 +1,8 @@
 package org.bit.threadtaobao.codescan;
 
 
-import org.bit.threadtaobao.client.R;
 import org.bit.threadtaobao.mainobjects.Goods;
+import org.bit.threadtaobao.view.R;
 
 import android.app.Activity;
 import android.content.Intent;

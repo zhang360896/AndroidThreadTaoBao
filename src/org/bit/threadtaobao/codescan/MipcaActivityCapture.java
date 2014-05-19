@@ -3,7 +3,7 @@ package org.bit.threadtaobao.codescan;
 import java.io.IOException;
 import java.util.Vector;
 
-import org.bit.threadtaobao.client.R;
+import org.bit.threadtaobao.view.R;
 
 import android.app.Activity;
 import android.content.Intent;

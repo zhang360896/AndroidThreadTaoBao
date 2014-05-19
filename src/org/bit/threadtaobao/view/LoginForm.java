@@ -1,6 +1,5 @@
 package org.bit.threadtaobao.view;
 
-import org.bit.threadtaobao.client.R;
 import org.bit.threadtaobao.mainobjects.User;
 import org.bit.threadtaobao.util.DialogUtil;
 import org.bit.threadtaobao.util.FinishListener;

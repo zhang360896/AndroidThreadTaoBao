@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import org.bit.threadtaobao.client.R;
+import org.bit.threadtaobao.view.R;
 import org.json.JSONObject;
 
 import android.app.Activity;

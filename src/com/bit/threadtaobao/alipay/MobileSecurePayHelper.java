@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import org.bit.threadtaobao.client.R;
+import org.bit.threadtaobao.view.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 

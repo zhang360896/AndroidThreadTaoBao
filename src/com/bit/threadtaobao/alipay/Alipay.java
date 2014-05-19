@@ -10,9 +10,7 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.bit.threadtaobao.client.R;
-
-
+import org.bit.threadtaobao.view.R;
 
 
 import android.app.Activity;

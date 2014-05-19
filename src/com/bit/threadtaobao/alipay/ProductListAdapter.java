@@ -8,7 +8,7 @@ package com.bit.threadtaobao.alipay;
 
 import java.util.ArrayList;
 
-import org.bit.threadtaobao.client.R;
+import org.bit.threadtaobao.view.R;
 
 import android.content.Context;
 import android.view.LayoutInflater;

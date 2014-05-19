@@ -17,8 +17,8 @@
 package com.mining.app.zxing.decoding;
 import java.util.Hashtable;
 
-import org.bit.threadtaobao.client.R;
 import org.bit.threadtaobao.codescan.MipcaActivityCapture;
+import org.bit.threadtaobao.view.R;
 
 import android.os.Bundle;
 import android.os.Handler;
