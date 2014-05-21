@@ -17,8 +17,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/code_scan_button"
-        android:lines="2"
-        android:gravity="center_horizontal"
+        android:gravity="left"
+        android:lines="6"
         android:textColor="@android:color/black"
         android:textSize="16sp" />
 

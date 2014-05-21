@@ -94,7 +94,7 @@ public class User {
 	}
 
 	public void viewShoppingCart() {
-
+		
 	}
 
 	public void viewOrders() {

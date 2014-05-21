@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:stretchColumns="1">	
+<TextView
+	android:text="商品详情"
+	android:id="@+id/TextView"
+	android:textSize="@dimen/label_font_size"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:gravity="center"
+	android:padding="@dimen/title_padding"
+	/>
+
+<TableRow>    
+<TextView
+	android:text="商品名称"
+	android:textSize="@dimen/label_font_size"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"/>
+<EditText
+	android:id="@+id/goods_name"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:cursorVisible="false"
+	android:editable="false"
+	/>
+</TableRow>
+
+<TableRow>
+<TextView
+	android:text="商品品牌"
+	android:textSize="@dimen/label_font_size"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"/>
+<EditText
+	android:id="@+id/goods_brand"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:cursorVisible="false"
+	android:editable="false"
+	/>
+</TableRow>
+
+<TableRow>
+<TextView
+	android:text="商品价格"
+	android:textSize="@dimen/label_font_size"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"/>
+<EditText
+	android:id="@+id/goods_price"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:cursorVisible="false"
+	android:editable="false"
+	/>
+</TableRow>
+
+<TableRow>
+<TextView
+	android:text="所在超市"
+	android:textSize="@dimen/label_font_size"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"/>
+<EditText
+	android:id="@+id/supermarket"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:cursorVisible="false"
+	android:editable="false"
+	/>
+</TableRow>
+
+<TableRow>
+<TextView
+	android:text="折扣信息"
+	android:textSize="@dimen/label_font_size"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"/>
+<EditText
+	android:id="@+id/discount"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:cursorVisible="false"
+	android:editable="false"
+	/>
+</TableRow>
+
+</TableLayout>

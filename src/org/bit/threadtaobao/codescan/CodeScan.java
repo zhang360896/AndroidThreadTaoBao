@@ -1,13 +1,25 @@
 package org.bit.threadtaobao.codescan;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.bit.threadtaobao.globalEntity.GlobalObjects;
+import org.bit.threadtaobao.mainobjects.Discount;
 import org.bit.threadtaobao.mainobjects.Goods;
+import org.bit.threadtaobao.mainobjects.Supermarket;
+import org.bit.threadtaobao.view.LoginForm;
 import org.bit.threadtaobao.view.R;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,7 +33,7 @@ public class CodeScan extends Activity {
 	 */
 	private TextView mTextView ;
 	
-	private Goods result;
+	private Goods goods;
 	private Button mButton;
 	private Button addToShoppingCartButton;
 	private Button deleteGoodsButton;
@@ -46,7 +58,7 @@ public class CodeScan extends Activity {
 				startActivityForResult(intent, SCANNIN_GREQUEST_CODE);
 			}
 		});
-		//cc test 2
+		
 		addToShoppingCartButton = (Button) findViewById(R.id.addToShoppingCart);
 		addToShoppingCartButton.setVisibility(View.INVISIBLE);
 		addToShoppingCartButton.setOnClickListener(new OnClickListener() {
@@ -54,11 +66,20 @@ public class CodeScan extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				String[] goodsInfo = mTextView.getText().toString().trim().split(";");
-//				Goods goods = new Goods(goodsInfo[0], goodsInfo[1], goodsInfo[2], goodsInfo[3], goodsInfo[5], goodsInfo[4]);
-				addToShoppingCartButton.setVisibility(View.INVISIBLE);
-				deleteGoodsButton.setVisibility(View.INVISIBLE);
-				mTextView.setText("");
+				AlertDialog.Builder builder = new AlertDialog.Builder(CodeScan.this);
+				builder.setTitle("提醒").setMessage("确定添加该商品到购物车？")
+						.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int which) {
+								GlobalObjects.shoppingCart.addGoods(goods);
+								addToShoppingCartButton.setVisibility(View.INVISIBLE);
+								deleteGoodsButton.setVisibility(View.INVISIBLE);
+								mTextView.setText("");
+							}
+						})
+						.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int which) {
+							}
+						}).show(); 		
 			}
 		});
 		
@@ -88,9 +109,33 @@ public class CodeScan extends Activity {
 			if(resultCode == RESULT_OK){
 				Bundle bundle = data.getExtras();
 				//显示扫描到的商品内容
-				mTextView.setText(bundle.getString("result").replace("\n", ";"));
+				mTextView.setText(bundle.getString("result"));
 				addToShoppingCartButton.setVisibility(View.VISIBLE);
 				deleteGoodsButton.setVisibility(View.VISIBLE);
+				//构造商品对象
+				String[] result = bundle.getString("result").split("\n");
+				Log.d("codesscan", result[0]);
+				String goodsId = result[0].split("：")[1];
+				String goodsName = result[1].split("：")[1];
+				String goodsBrand = result[2].split("：")[1];
+				String goodsPriceString = result[3].split("：")[1];
+				double goodsPrice = Double.valueOf(goodsPriceString.substring(0, goodsPriceString.length()-1));
+				Discount discount = null;
+				String discountString = result[5].split("：")[1];
+				if (discountString.equals("无")) {
+					discount = null;
+				} else {
+					String discountValueString = discountString.split("，")[0];
+					String discountDeadlineString = discountString.split("，")[1];
+					try{
+						discount = new Discount(Double.valueOf(discountValueString.substring(0, discountValueString.length()-1)), new SimpleDateFormat("yyyy/MM/dd").parse(discountDeadlineString));
+					} catch(ParseException e){
+						e.printStackTrace();
+					}
+				}
+				String sm = result[4].split("：")[1];
+				Supermarket supermarket = new Supermarket(sm.split("，")[0], sm.split("，")[1]);
+				goods = new Goods(goodsId,goodsName,goodsBrand,goodsPrice,discount,supermarket);				
 			}
 			break;
 		}

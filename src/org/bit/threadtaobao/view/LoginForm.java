@@ -1,6 +1,12 @@
 package org.bit.threadtaobao.view;
 
+import java.util.ArrayList;
+
 import org.apache.log4j.Logger;
+import org.bit.threadtaobao.globalEntity.GlobalObjects;
+import org.bit.threadtaobao.mainobjects.Goods;
+import org.bit.threadtaobao.mainobjects.Order;
+import org.bit.threadtaobao.mainobjects.ShoppingCart;
 import org.bit.threadtaobao.mainobjects.User;
 import org.bit.threadtaobao.util.ConfigureLog4J;
 import org.bit.threadtaobao.util.DialogUtil;
@@ -31,7 +37,6 @@ public class LoginForm extends Activity
 	// 定义界面中两个按钮
 	Button bnLogin, bnCancel, bnRegister;
 	public static SQLiteDatabase db;
-	private User user;
 	//日志
 	private Logger logger; 
 	
@@ -65,6 +70,8 @@ public class LoginForm extends Activity
 					//用户名密码正确
 					if(validateLogin()) {
 						logger.trace("登录成功！");
+						GlobalObjects.shoppingCart = new ShoppingCart(new ArrayList<Goods>(),0,0);
+						GlobalObjects.orderList = new ArrayList<Order>();
 						// 启动Main Activity
 						Intent intent = new Intent(LoginForm.this, MainForm.class);
 						startActivity(intent);
@@ -127,7 +134,7 @@ public class LoginForm extends Activity
 	{
 		String username = etName.getText().toString().trim();
 		String pwd = etPass.getText().toString().trim();
-		user = new User(username,pwd);
+		User user = new User(username,pwd);
 		
 		if (user.register()) {
 			return true;
@@ -142,9 +149,9 @@ public class LoginForm extends Activity
 	{
 		String username = etName.getText().toString().trim();
 		String pwd = etPass.getText().toString().trim();
-		user = new User(username,pwd);
+		GlobalObjects.currentUser = new User(username,pwd);
 		
-		if (user.login()) {
+		if (GlobalObjects.currentUser.login()) {
 			return true;
 		} else {
 			return false;
