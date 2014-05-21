@@ -1,6 +1,8 @@
 package org.bit.threadtaobao.view;
 
+import org.apache.log4j.Logger;
 import org.bit.threadtaobao.mainobjects.User;
+import org.bit.threadtaobao.util.ConfigureLog4J;
 import org.bit.threadtaobao.util.DialogUtil;
 import org.bit.threadtaobao.util.FinishListener;
 
@@ -29,12 +31,17 @@ public class LoginForm extends Activity
 	// 定义界面中两个按钮
 	Button bnLogin, bnCancel, bnRegister;
 	public static SQLiteDatabase db;
-	User user;
+	private User user;
+	//日志
+	private Logger logger; 
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
+		ConfigureLog4J.configure();
+		logger = Logger.getLogger(LoginForm.class);
 		// open sqlite database
 		db = SQLiteDatabase.openOrCreateDatabase(this.getFilesDir()
 				.toString() + "/thread_db.db3", null);
@@ -57,6 +64,7 @@ public class LoginForm extends Activity
 				if (validateNotNull()) {
 					//用户名密码正确
 					if(validateLogin()) {
+						logger.trace("登录成功！");
 						// 启动Main Activity
 						Intent intent = new Intent(LoginForm.this, MainForm.class);
 						startActivity(intent);
@@ -64,6 +72,7 @@ public class LoginForm extends Activity
 						finish();
 					}
 					else {
+						logger.trace("登录失败！用户名称或者密码错误！");
 						DialogUtil.showDialog(LoginForm.this
 							, "用户名称或者密码错误，请重新输入！", false);
 					}
@@ -81,17 +90,18 @@ public class LoginForm extends Activity
 				if (validateNotNull()) {
 					//用户名是否已存在
 					if(validateRegister()) {
+						logger.trace("注册成功！");
 						DialogUtil.showDialog(LoginForm.this
 								, "注册成功！", false);
 					}
 					else {
+						logger.trace("用户名已存在!");
 						DialogUtil.showDialog(LoginForm.this
 							, "用户名已存在，请重新输入！", false);
 					}
 				}
 			}
 		});
-		
 	}
 
 	//对用户名和密码进行校验
@@ -172,5 +182,6 @@ public class LoginForm extends Activity
 		if (db != null && db.isOpen()) {
 			db.close();
 		}
+		logger.trace("退出");
 	}
 }
