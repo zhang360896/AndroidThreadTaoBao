@@ -54,16 +54,20 @@ public class Order {
 		return createTime;
 	}
 	
-	public void submit() {
-
+	public boolean submit() {
+		this.state = "待支付";
+		this.createTime = new Date();
+		return true;
 	}
 
-	public void cancel() {
-
-	}
-
-	public void delete() {
-
+	public boolean cancel() {
+		this.state = "已取消";
+		return true;
 	}
 	
+	public boolean pay(){
+		this.payTime = new Date();
+		this.state = "已支付";
+		return true;
+	}
 }

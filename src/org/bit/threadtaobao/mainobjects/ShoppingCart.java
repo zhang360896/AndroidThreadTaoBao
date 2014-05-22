@@ -2,6 +2,9 @@ package org.bit.threadtaobao.mainobjects;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
+
+import org.bit.threadtaobao.globalEntity.GlobalObjects;
 
 public class ShoppingCart{
 
@@ -62,8 +65,38 @@ public class ShoppingCart{
 			this.totalAmount += goods.getGoodsPrice();
 		}
 	}
+	//生成订单
+	public boolean generateOrder() {
+		ArrayList<Goods> orderGoodsList = (ArrayList<Goods>)goodsList.clone();
+		Random random = new Random();
+		int x = random.nextInt(89999999);
+		int flag = 0;
+		while (true) {
+			flag = 0;
+			x += 10000000;
+			for (Order order : GlobalObjects.orderList) {
+				if (order.getOrderId().equals(String.valueOf(x))) {
+					flag = 1;
+					break;
+				}
+			}
+			if (flag == 0) {
+				break;
+			}
+			x = random.nextInt(89999999);
+		}
+		Order order = new Order(String.valueOf(x), orderGoodsList, this.totalAmount, null, null, null);
+		if (order.submit()) {
+			clear();
+			GlobalObjects.orderList.add(order);
+			return true;
+		}
+		return false;
+	}
 	
-	public void generateOrder() {
-		
+	public void clear() {
+		this.goodsList.clear();
+		this.allGoodsNum = 0;
+		this.totalAmount = 0;
 	}
 }

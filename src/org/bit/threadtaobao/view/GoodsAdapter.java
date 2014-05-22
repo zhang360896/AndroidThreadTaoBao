@@ -4,17 +4,13 @@ import java.util.ArrayList;
 
 import org.bit.threadtaobao.globalEntity.GlobalObjects;
 import org.bit.threadtaobao.mainobjects.Goods;
-import org.bit.threadtaobao.util.DialogUtil;
-
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +21,7 @@ public class GoodsAdapter extends BaseAdapter{
     public GoodsAdapter(Context context, ArrayList<Goods> goodsList) { 
         this.context = context; 
         this.goodsList = goodsList; 
-    } 
+    }
     
     @Override
     public int getCount(){ 
@@ -71,7 +67,6 @@ public class GoodsAdapter extends BaseAdapter{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				 GlobalObjects.shoppingCart.delGoods(goodsList.get(index));
-//				 goodsList.remove(index);
 	             notifyDataSetChanged();
 	             Toast.makeText(context, "删除" + goodsNameTextView.getText().toString() + "!", 
 	                        Toast.LENGTH_SHORT).show(); 

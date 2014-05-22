@@ -93,16 +93,4 @@ public class User {
 
 	}
 
-	public void viewShoppingCart() {
-		
-	}
-
-	public void viewOrders() {
-
-	}
-
-	public void viewLocation() {
-
-	}
-
 }

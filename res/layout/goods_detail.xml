@@ -20,12 +20,11 @@
 	android:textSize="@dimen/label_font_size"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"/>
-<EditText
+<TextView
 	android:id="@+id/goods_name"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
 	android:cursorVisible="false"
-	android:editable="false"
 	/>
 </TableRow>
 
@@ -35,27 +34,26 @@
 	android:textSize="@dimen/label_font_size"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"/>
-<EditText
+<TextView
 	android:id="@+id/goods_brand"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
 	android:cursorVisible="false"
-	android:editable="false"
 	/>
 </TableRow>
 
 <TableRow>
+    
 <TextView
 	android:text="商品价格"
 	android:textSize="@dimen/label_font_size"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"/>
-<EditText
+<TextView
 	android:id="@+id/goods_price"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
 	android:cursorVisible="false"
-	android:editable="false"
 	/>
 </TableRow>
 
@@ -65,12 +63,11 @@
 	android:textSize="@dimen/label_font_size"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"/>
-<EditText
+<TextView
 	android:id="@+id/supermarket"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
 	android:cursorVisible="false"
-	android:editable="false"
 	/>
 </TableRow>
 
@@ -80,12 +77,11 @@
 	android:textSize="@dimen/label_font_size"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"/>
-<EditText
+<TextView
 	android:id="@+id/discount"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
 	android:cursorVisible="false"
-	android:editable="false"
 	/>
 </TableRow>
 

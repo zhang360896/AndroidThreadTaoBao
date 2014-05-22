@@ -7,11 +7,15 @@ import org.bit.threadtaobao.mainobjects.Goods;
 import org.bit.threadtaobao.util.DialogUtil;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -20,7 +24,8 @@ public class ShoppingCartView extends Activity {
 	private ListView shoppingcartListView = null;
 	private ArrayList<Goods> goodsList;
 	private EditText allAmount;
-
+	private Button generateOrderBtn;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -52,6 +57,34 @@ public class ShoppingCartView extends Activity {
 				+ String.valueOf(GlobalObjects.shoppingCart.getAllGoodsNum())
 				+ "件商品 ，  "
 				+ " 总价： " + String.valueOf(GlobalObjects.shoppingCart.getTotalAmount()) + "元");
+		generateOrderBtn = (Button) findViewById(R.id.generateOrderBtn);
+		generateOrderBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (GlobalObjects.shoppingCart.getAllGoodsNum() == 0) {
+					AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingCartView.this);
+					builder.setTitle("错误").setMessage("购物车没有商品，请先扫码！")
+							.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int which) {
+								}
+							}).show();
+					return;
+				}
+				if(GlobalObjects.shoppingCart.generateOrder()){
+					Intent intent = new Intent(ShoppingCartView.this, OrderListView.class);
+					startActivity(intent);
+				} else {
+					AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingCartView.this);
+					builder.setTitle("错误").setMessage("生成订单出错！")
+							.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int which) {
+								}
+							}).show();
+				}
+			}
+		});
 	}
 
 	public void viewItemDetail(int position) {
