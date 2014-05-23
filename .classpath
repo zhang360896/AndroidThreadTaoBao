@@ -10,5 +10,7 @@
 	<classpathentry kind="lib" path="E:/jmm/workspace/android/ThreadTaobao/libs/zxing.jar"/>
 	<classpathentry kind="lib" path="E:/jmm/workspace/android/ThreadTaobao/libs/android-logging-log4j-1.0.3.jar"/>
 	<classpathentry kind="lib" path="E:/jmm/workspace/android/ThreadTaobao/libs/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="E:/jmm/workspace/android/ThreadTaobao/libs/easymock-3.2.jar"/>
+	<classpathentry kind="lib" path="E:/jmm/workspace/android/ThreadTaobao/libs/junit-4.10.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

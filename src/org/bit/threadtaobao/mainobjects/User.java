@@ -35,9 +35,6 @@ public class User {
 		return username;
 	}
 	
-	private void modifyPassword() {
-		
-	}
 	public boolean login() {
 		SQLiteDatabase db = LoginForm.db;
 		Cursor cursor = null;

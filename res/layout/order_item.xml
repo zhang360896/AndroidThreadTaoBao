@@ -2,19 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:descendantFocusability="blocksDescendants" >
-    <Button
-        android:id="@+id/delOrder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="删除" />
-
+    
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-
+		<Button
+	        android:id="@+id/delOrder"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="删除" />
         <TextView
             android:id="@+id/order_goods_name"
             android:layout_width="wrap_content"
@@ -41,5 +40,6 @@
         android:id="@+id/pay_order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="right"
         android:text="立即支付" />
 </LinearLayout>

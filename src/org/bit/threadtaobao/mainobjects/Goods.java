@@ -9,6 +9,9 @@ public class Goods {
 	private Supermarket supermarket;
 
 
+	public Goods() {
+		
+	}
 	public Goods(String goodsId, String goodsName, String goodsBrand,
 			double goodsPrice, Discount discount, Supermarket supermarket) {
 		super();

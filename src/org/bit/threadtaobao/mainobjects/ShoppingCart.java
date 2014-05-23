@@ -12,6 +12,10 @@ public class ShoppingCart{
 	private int allGoodsNum;
 	private double totalAmount;
 	
+	public ShoppingCart() {
+
+	}
+	
 	public ShoppingCart(ArrayList<Goods> goodsList, int allGoodsNum,
 			double totalAmount) {
 		super();
@@ -66,6 +70,7 @@ public class ShoppingCart{
 		}
 	}
 	//生成订单
+	@SuppressWarnings("unchecked")
 	public boolean generateOrder() {
 		ArrayList<Goods> orderGoodsList = (ArrayList<Goods>)goodsList.clone();
 		Random random = new Random();
