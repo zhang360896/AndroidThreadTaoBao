@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="hello">Hello World, Login!</string>
-	<string name="app_name">Thread淘宝客户端</string>
+	<string name="app_name">Thread扫码支付客户端</string>
 	<string name="user_name">用户名：</string>
 	<string name="user_pass">密码：</string>
 	<string name="login">登录</string>

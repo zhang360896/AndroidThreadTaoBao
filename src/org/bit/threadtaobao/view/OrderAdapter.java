@@ -2,10 +2,11 @@ package org.bit.threadtaobao.view;
 
 import java.util.ArrayList;
 
-import org.bit.threadtaobao.codescan.CodeScan;
+import org.apache.log4j.Logger;
 import org.bit.threadtaobao.globalEntity.GlobalObjects;
 import org.bit.threadtaobao.mainobjects.Goods;
 import org.bit.threadtaobao.mainobjects.Order;
+import org.bit.threadtaobao.util.ConfigureLog4J;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -22,11 +23,15 @@ import android.widget.Toast;
 public class OrderAdapter extends BaseAdapter {
 	private Context context; 
     private ArrayList <Order> orderList;
+    //日志
+  	private Logger logger;
     
 	public OrderAdapter(Context context, ArrayList<Order> orderList) {
 		super();
 		this.context = context;
 		this.orderList = orderList;
+		ConfigureLog4J.configure();
+		logger = Logger.getLogger(OrderAdapter.class);
 	}
 
 	@Override
@@ -83,11 +88,13 @@ public class OrderAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				logger.trace("开始支付");
 				AlertDialog.Builder builder = new AlertDialog.Builder(context);
 				builder.setTitle("提醒").setMessage("确定支付：" + String.valueOf(order.getTotalAmount()) + "元？")
 						.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int which) {
 								if (order.pay()) {
+									logger.trace("支付成功！");
 									notifyDataSetChanged();
 									Toast.makeText(context, "支付成功！", 
 				                        Toast.LENGTH_SHORT).show();
@@ -110,6 +117,7 @@ public class OrderAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				logger.trace("删除订单！");
 				 GlobalObjects.orderList.remove(index);
 	             notifyDataSetChanged();
 	             Toast.makeText(context, "删除订单!", 

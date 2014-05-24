@@ -2,9 +2,11 @@ package org.bit.threadtaobao.view;
 
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
 import org.bit.threadtaobao.globalEntity.GlobalObjects;
 import org.bit.threadtaobao.mainobjects.Goods;
 import org.bit.threadtaobao.mainobjects.Order;
+import org.bit.threadtaobao.util.ConfigureLog4J;
 import org.bit.threadtaobao.util.DialogUtil;
 
 import android.app.Activity;
@@ -18,11 +20,15 @@ import android.widget.TextView;
 public class OrderListView extends Activity {
 	private ListView orderListView;
 	private ArrayList<Order> orderList;
+	//日志
+	private Logger logger; 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.order_list);
+		ConfigureLog4J.configure();
+		logger = Logger.getLogger(OrderListView.class);
 		init();
 	}
 	
@@ -39,6 +45,7 @@ public class OrderListView extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
+				logger.trace("查看订单详情");
 				viewItemDetail(position);
 			}
 			

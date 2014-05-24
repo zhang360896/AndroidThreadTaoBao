@@ -10,9 +10,6 @@ import org.bit.threadtaobao.mainobjects.ShoppingCart;
 import org.bit.threadtaobao.mainobjects.User;
 import org.bit.threadtaobao.util.ConfigureLog4J;
 import org.bit.threadtaobao.util.DialogUtil;
-import org.bit.threadtaobao.util.FinishListener;
-
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -58,7 +55,14 @@ public class LoginForm extends Activity
 		bnCancel = (Button) findViewById(R.id.bnCancel);
 		bnRegister = (Button) findViewById(R.id.bnRegister);
 		// 为bnCancal按钮的单击事件绑定事件监听器
-		bnCancel.setOnClickListener(new FinishListener(this));
+		bnCancel.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				confirmExit();
+			}
+		});
 		bnLogin.setOnClickListener(new OnClickListener()
 		{
 			@Override

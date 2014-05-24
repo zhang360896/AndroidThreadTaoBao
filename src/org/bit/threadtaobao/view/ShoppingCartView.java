@@ -2,8 +2,10 @@ package org.bit.threadtaobao.view;
 
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
 import org.bit.threadtaobao.globalEntity.GlobalObjects;
 import org.bit.threadtaobao.mainobjects.Goods;
+import org.bit.threadtaobao.util.ConfigureLog4J;
 import org.bit.threadtaobao.util.DialogUtil;
 
 import android.app.Activity;
@@ -25,12 +27,15 @@ public class ShoppingCartView extends Activity {
 	private ArrayList<Goods> goodsList;
 	private EditText allAmount;
 	private Button generateOrderBtn;
-	
+	//日志
+	private Logger logger; 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.shoppingcart);
+		ConfigureLog4J.configure();
+		logger = Logger.getLogger(ShoppingCartView.class);
 		init();
 	}
 
@@ -48,6 +53,7 @@ public class ShoppingCartView extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
+				logger.trace("查看商品详情");
 				viewItemDetail(position);
 			}
 		});
@@ -73,9 +79,11 @@ public class ShoppingCartView extends Activity {
 					return;
 				}
 				if(GlobalObjects.shoppingCart.generateOrder()){
+					logger.trace("生成订单成功");
 					Intent intent = new Intent(ShoppingCartView.this, OrderListView.class);
 					startActivity(intent);
 				} else {
+					logger.trace("生成订单出错");
 					AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingCartView.this);
 					builder.setTitle("错误").setMessage("生成订单出错！")
 							.setPositiveButton("确定", new DialogInterface.OnClickListener() {
